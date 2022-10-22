@@ -1,27 +1,33 @@
 # NgDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+**ng-demo** es un CRUD de clientes hecho con Angular 14, simulación de respuestas con service worker y aplicando el patrón de diseño Facade en el scaffolding.
 
-## Development server
+## Prerrequisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Debe tener instalado lo siguiente:
 
-## Code scaffolding
+- Node versión 14.15.x/^16.10.x
+- Angular 14
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ¿Cómo levantar la aplicación?
+1. Instalar paquetes: `npm install`.
+2. Iniciar aplicación: `npm run start` o `ng serve`.
+3. Paso opcional en caso no funcionen los mocks: `npm run update`.
 
-## Build
+## ¿Cómo probar funcionalmente?
+La aplicacion cuenta con un inicio de sesión y una vista de búsqueda y creación de clientes.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Inicio de sesión
+-Para iniciar sesión puede colocar cualquier correo que cumpla con el formato de correo ejemplo@ejemplo.com y para la contraseña puede ser cualquiera.
 
-## Running unit tests
+### Creación, edición y eliminación.
+-**Para la creación**, al iniciar sesión aparecerá un botón en la parte inferior derecha con el simbolo de agregar, aparecerá un modal con un formulario de persona/cliente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+-**Para la edición**, cuando se tenga creado algún registro aparecerá en la tabla principal y tendrá un botón que indica la edición de los datos del cliente.
 
-## Running end-to-end tests
+-**Para la eliminación**, en la misma tabla, podrá encontrar un botón con el símbolo de tacho de basura. Al darle presionar el botón, el registro desaparecerá.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+Cualquier consulta me pueden escribir a mi correo: Joelsulca.c@gmail.com.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Gracias =)!

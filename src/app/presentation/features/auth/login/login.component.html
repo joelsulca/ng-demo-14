@@ -1,0 +1,38 @@
+<div class="form">
+  <div class="form__header">
+    <h2>Bienvenido</h2>
+    <p>Ingresa cualquier credencial para esta demo</p>
+  </div>
+  <div class="form__body">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
+      <div class="field">
+        <mat-form-field appearance="fill">
+          <mat-label>Ingresa un email</mat-label>
+          <input type="email" matInput formControlName="identifier" placeholder="emeal@example.com" required>
+          <mat-error *ngIf="loginForm?.get('identifier')?.hasError('email') && !loginForm?.get('identifier')?.hasError('required')">
+            Ingresa un email válido.
+          </mat-error>
+          <mat-error *ngIf="loginForm?.get('identifier')?.hasError('required')">
+            El Email es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="field">
+        <mat-form-field appearance="fill">
+          <mat-label>Ingresa tu contraseña</mat-label>
+          <input type="password" matInput formControlName="password" required>
+          <mat-error *ngIf="loginForm?.get('password')?.hasError('required')">
+            La contraseña es requerida.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <ng-container *ngIf="loginError$ | async as errorMessage">
+        <p class="error-form">{{ errorMessage }}</p>
+      </ng-container>
+      <br>
+
+      <button mat-raised-button color="primary">Ingresar</button>
+    </form>
+  </div>
+</div>

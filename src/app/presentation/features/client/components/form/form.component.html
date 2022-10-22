@@ -1,0 +1,49 @@
+<div>
+  <mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+      <span class="title">{{title}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-dialog-content class="mat-typography">
+    <form [formGroup]="clientForm" #ngFormRef="ngForm">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput formControlName="firstName" required>
+          <mat-error *ngIf="clientForm?.get('firstName')?.hasError('required')">
+            Ingrese su nombre
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Apellidos</mat-label>
+          <input type="text" matInput formControlName="lastName" required>
+          <mat-error *ngIf="clientForm?.get('lastName')?.hasError('required')">
+            Ingrese su apellido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Edad</mat-label>
+          <input type="number" matInput formControlName="age" required>
+          <mat-error *ngIf="clientForm?.get('age')?.hasError('required')">
+            Ingrese su edad
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <mat-label>Idiomas:</mat-label>
+          <div class="languages">
+            <span *ngFor="let language of languages; let i = index" formArrayName="languages">
+              <mat-checkbox (change)="updateCheckboxLanguage(language, $event.checked)"
+                [color]="language.color" value="language.id">
+                {{language.name}}
+              </mat-checkbox>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" (click)="saveData($event)">Guardar</button>
+  </mat-dialog-actions>
+</div>

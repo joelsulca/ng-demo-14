@@ -1,0 +1,50 @@
+<app-filter (text)="applyFilter($event)"></app-filter>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre. </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Edad </th>
+    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="languages">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Idiomas </th>
+    <td mat-cell *matCellDef="let element"> {{element.languages | arrayObjectToString: 'name'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="creationDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de creación </th>
+    <td mat-cell *matCellDef="let element"> {{element.creationDate | date:'MM-dd-yy, hh:mm aa' }} </td>
+  </ng-container>
+
+   <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+    <td mat-cell *matCellDef="let element"> <button mat-icon-button color="primary" (click)="editClient(element)">
+      <mat-icon>edit</mat-icon>
+    </button>
+   </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+    <td mat-cell *matCellDef="let element"> <button mat-icon-button color="warn" (click)="deleteClient(element)">
+      <mat-icon>delete</mat-icon>
+    </button>
+   </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = dataIndex;"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4" *ngIf="dataSource.data.length > 0">No se encontraron coincidencias</td>
+  </tr>
+</table>

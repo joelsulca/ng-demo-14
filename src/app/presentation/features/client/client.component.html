@@ -1,0 +1,6 @@
+<div class="container">
+  <div class="add-button-container">
+    <app-add-button (onOpen)="addClient()"></app-add-button>
+  </div>
+  <app-list (onEdit)="editClient($event)" (onDelete)="deleteClient($event)" [clients]="clients$ | async"></app-list>
+</div>
